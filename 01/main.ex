@@ -1,8 +1,9 @@
 defmodule LocationListCalculator do
   def calculate_total_distance(file_path \\ "list.txt") do
-     { location_list_1, location_list_2 } = read_lists_from_file!(file_path)
-     total_distance_between_lists(location_list_1, location_list_2)
-     |> IO.puts()
+    {location_list_1, location_list_2} = read_lists_from_file!(file_path)
+
+    total_distance_between_lists(location_list_1, location_list_2)
+    |> IO.puts()
   end
 
   defp read_lists_from_file!(file_path) do
@@ -15,10 +16,11 @@ defmodule LocationListCalculator do
 
   defp total_distance_between_lists(location_list_1, location_list_2) do
     sorted_locations = [Enum.sort(location_list_1), Enum.sort(location_list_2)]
+
     sorted_locations
-      |> Enum.zip()
-      |> Enum.map(fn {location_1, location_2} -> abs(location_1 - location_2) end)
-      |> Enum.sum()
+    |> Enum.zip()
+    |> Enum.map(fn {location_1, location_2} -> abs(location_1 - location_2) end)
+    |> Enum.sum()
   end
 end
 
